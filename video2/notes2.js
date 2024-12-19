@@ -57,3 +57,44 @@
 
 //browserslist
 // for making our app compatible ,we use browserslist,for that configure it inside package.json file by adding browserslist
+
+// ############################## VIDEO 3 NOTES - COMBINED
+
+// Scripts - it can be used for creating shortcut(alias) for running or building or testing our AudioParamMap
+// we no longer need to type the entire commands for running ,we can create scripts and use these.this is a
+// standard method followed in industries
+// after writing scripts,we can use npm run start (or npm start-this works only for npm start because it is a reserved
+// keyword),npm run build
+
+//React - ELEMENTS
+//DOM elements are html elements like body,head,h1 etc,in react we have react elements which are equivalent to dom elements
+// for example,for creating h1 in react we use React.createElemenet() - this is an react Element,react elements creates an Object
+// ,when we render on to the DOMException,it become html elemenrs
+
+//JSX - It is a convention that is used to merge Html and javascript ,we can write html inside javascript instead
+// writing both in a seperate file
+//JSX will not be undertood by javscript engine,js engine can only understand proper es6 sytax code.
+//but we use jsx in out projects,the reason we are not getting any error is module bundlers-parcel,webpack
+//before reaching to js engine,the code will be transpiled to proper js code
+//even parcel/webpack is not converting directly,it uses babel to do this task.babel converts in such a way that the code
+//our code is compatible with many versions of chrome or any other browsers
+// conversion is as follows --> jsx code to React.createELement (by babel) ,React.creatElement to JS object(by react)
+//  ,js object to Html Reader(during rendering)
+
+// in JSX ,we follow camel case - className
+//we always need to return a single statement only,because babel will understand where it is starting and where it is
+//wnding through this.for this,we wrap our multiple statements inside ()
+
+//React Component
+// class based component  - OLD way,it uses classses
+//Functional based component - New way(most recommended way),it uses functions
+
+//React functional component
+//It is a normal js function that returns a jsx element
+
+//COmponent composition - rendering a component(title ) inside another component(heading) is known
+// as component composition
+
+//Cross-site scripting
+//whenever we try to inject js code(data received from any api) inside our component,jsx will not blindly render it,
+// it will sanitize before rendering,cleans it up if there are any malicious code exits
