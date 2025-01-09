@@ -17,10 +17,11 @@
 .restaurent-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 .restaurent-card {
-  height: 300px;
+  /* height: 300px; */
+  margin: 3px;
   width: 200px;
   background-color: #f0f0f0;
 }
