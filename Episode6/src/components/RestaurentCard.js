@@ -1,13 +1,17 @@
 import { IMAGE } from "../../utils/constants";
 const RestaurentCard = (props) => {
   const { res1 } = props;
-  const { name, menu, rating, reviews } = res1;
+  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo } =
+    res1.info;
   return (
     <div className="restaurent-card">
-      <img className="res-logo" src={IMAGE} />
+      <div className="image-pic">
+        <img className="res-logo" src={IMAGE + cloudinaryImageId} />
+      </div>
       <h3>{name}</h3>
-      <h4>{menu.map((i) => i.name).join(",")}</h4>
-      <h4>{rating}</h4>
+      <h4>{cuisines.join(",")}</h4>
+      <h4>{costForTwo}</h4>
+      <h4>{avgRating}</h4>
     </div>
   );
 };

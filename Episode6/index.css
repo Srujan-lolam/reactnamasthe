@@ -22,7 +22,7 @@
 .restaurent-card {
   /* height: 300px; */
   margin: 3px;
-  width: 230px;
+  width: 250px;
   background-color: #f0f0f0;
 }
 .restaurent-card:hover {
@@ -30,7 +30,7 @@
   cursor: pointer;
 }
 .restaurent-card h4 {
-  margin-top: 8px;
+  margin-top: 6px;
   margin-bottom: 8px;
 }
 
@@ -39,6 +39,8 @@
 }
 .res-logo {
   width: 100%;
+  height: 200px;
+  border-radius: 8px;
 }
 .filter{
   display: flex;
