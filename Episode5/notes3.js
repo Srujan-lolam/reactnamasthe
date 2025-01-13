@@ -1,5 +1,7 @@
 //This video .episode is about restructuring our code by coding principles(standard ways) and learning hooks
 
+import { useState } from "react";
+
 //Everything than is done using react can also be done using normal html,css and javascript.The only use is
 //it makes our job easy by providing some build in features
 
@@ -20,38 +22,17 @@
 // HOOK
 // It is a normal javascript utitlity function giving by react with some supernatural powers.most usefull hooks are
 // useState and useEffect
-//before building any application,we should plan it before(like how the UI looks like,what are the features etc),
-// so build wireframe(how it looks like)
-//for example for food ordering application we can have the following - Low level component
-// Header
-// -logo
-// -navitems
-//     -about
-//     -home
-//     -cart
-// body
-//     -search Input
-//     -restaurent container
-//         -restaurent card
-//                 -image of food
-//                 -cuisine
-//                 -time
 
-// footer
-//     -address
-//     -links
-//     -copyright etc
+// UseState(a special state variable which has some super natural powers) - useState is a React Hook that allows you to add state
+// management to functional components. It returns a state variable and a function to update that state, enabling reactivity in the component.
+//In react ,if we want to re-render the UI,state variables are the only sources.when a state variable changes,the UI re-renders which does
+//not happen in the case of regular variables
 
-//putting one component in another is known as component composition
-// style = {{background-color : red}} -one way of adding inline css
-//const styleCard = { background-color : black} and then style = {styleCard} - second way of adding inline css
+//Reconciliation - also know as React FIbre
+//Whenever there is UI,react creates a virtual DOm(virtual Dom is arepresentation of actual DOM and actual DOM is representation of code(div,h1 etc))
+//DIff algorithm-alwasy find the diff between virtual and actual DOM,if there is any diff,then it re-renders
+//this is why react is fast and more popular in the market.As soon as we can any setListof..function,react start reconciliation algorithm
 
-//Props
-
-//Props means properties,these are something that we can pass as an arguments to a component
-//pass arguments and then use them as props.resName etc - one way of doing
-//destructure on the ply (in the function itslef write as - {resName,cuisine}) and then use directly as resName etc-second way
-
-//config driven UI **
-//Based on the data received from the backed or API ,the UI get changes(for example,swiggy UI is differenct)
-//for different location based on the offers.This is known as config driven UI
+//const [list,setList] = useState(res) ==> this is array destructuring on the ply,we can write it as
+// const arr = useState(res)
+// const [list,setList] = arr like this also
