@@ -10,3 +10,16 @@
 //because react does not want to wait for rendering until the data is fetched.so it renders,loads the data,re-renders
 // when the data is fetched
 //if we use same class based components twice then two instances are created(in code - UserClass.js line 17,18)
+
+// componentMounts --> render --> update to DOM --> componentDidMount(in general)
+// if there are two instances ,then they will be updated via unstable_batchedUpdates(two at once )
+
+// parent constructor
+// parent render
+// firstchild constructor
+// firstchild render
+// secondchild constructor
+// second child render
+// first child Mount
+// second child mount
+// parent mount
