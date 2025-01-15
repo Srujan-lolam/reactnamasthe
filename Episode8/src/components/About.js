@@ -3,7 +3,6 @@ import { Component } from "react";
 class About extends Component {
   constructor(props) {
     super(props); //automatically empty object if there are not passed any
-    console.log(props);
     console.log("parent constructor");
   }
   componentDidMount() {
@@ -14,8 +13,8 @@ class About extends Component {
     return (
       <div>
         <h3>This is About Us Page</h3>
-        <UserClass name="srujan(class)" />
-        <UserClass name="akshay(class)" />
+        <UserClass designation="Software Engineer1" />
+        {/* <UserClass name="akshay(class)" /> */}
       </div>
     );
   }
