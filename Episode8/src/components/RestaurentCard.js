@@ -1,10 +1,17 @@
 import { IMAGE } from "../../utils/constants";
+import { Link, useNavigate } from "react-router-dom";
 const RestaurentCard = (props) => {
+  const navigate = useNavigate();
   const { res1 } = props;
-  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo } =
+  const { cloudinaryImageId, name, avgRating, cuisines, costForTwo, id } =
     res1.info;
   return (
-    <div className="restaurent-card">
+    <div
+      className="restaurent-card"
+      onClick={() => {
+        navigate(`./restaurent/:${id}`);
+      }}
+    >
       <div className="image-pic">
         <img className="res-logo" src={IMAGE + cloudinaryImageId} />
       </div>
