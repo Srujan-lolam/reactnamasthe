@@ -13,11 +13,18 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <li>Online Status : {onlineStatus ? "🟢" : "🔴"}</li>
-          <li>Home</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
           <li>
             <Link to="./about">About</Link>
           </li>
-          <li>Contact Us</li>
+          <li>
+            <Link to="./contact">Contact Us</Link>
+          </li>
+          <li>
+            <Link to="./grocery">Grocery</Link>
+          </li>
           <li>Cart</li>
           <button
             className="login-btn"
