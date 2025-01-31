@@ -12,7 +12,7 @@ const RestaurentCard = (props) => {
         navigate(`./restaurent/:${id}`);
       }}
     >
-      <div className="image-pic">
+      <div className="image-pic cursor-pointer">
         <img className=" rounded-lg" src={IMAGE + cloudinaryImageId} />
       </div>
       <h3 className="font-bold py-2">{name}</h3>

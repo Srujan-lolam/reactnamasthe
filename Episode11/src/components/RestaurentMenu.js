@@ -5,10 +5,14 @@ import useRestaurentMenu from "../../utils/useRestaurentMenu";
 import RestaurentCategory from "./RestaurentCategory";
 const RestaurentMenu = () => {
   const { resId } = useParams();
-  const resInfo = useRestaurentMenu();
-  const itemCards =
-    resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[1]
-      ?.card?.card;
+  const cleanedResId = resId.replace(/^:/, "");
+  const resInfo = useRestaurentMenu(cleanedResId);
+  if (resInfo === null) return <Shimmar />;
+  const { name, cuisines, costForTwoMessage } =
+    resInfo?.data?.cards[2]?.card?.card.info;
+  const { itemCards } =
+    resInfo?.data?.cards?.[4].groupedCard?.cardGroupMap.REGULAR?.cards?.[2].card
+      ?.card;
   const categories =
     resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) => {
@@ -21,12 +25,19 @@ const RestaurentMenu = () => {
   return resInfo === null || resId === null ? (
     <Shimmar />
   ) : (
-    <div>
-      <ul>
-        {categories.map((res) => {
-          return <RestaurentCategory />;
-        })}
-      </ul>
+    <div className="text-center">
+      <h1 className="font-bold mt-5 mb-3 text-4xl">{name}</h1>
+      <p className="font-bold text-2xl">
+        {cuisines.join(", ")} - {costForTwoMessage}
+      </p>
+      {categories.map((category) => {
+        return (
+          <RestaurentCategory
+            key={category.card.card.title}
+            data={category.card.card}
+          />
+        );
+      })}
     </div>
   );
 };
