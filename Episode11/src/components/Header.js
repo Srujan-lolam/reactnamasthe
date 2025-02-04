@@ -1,10 +1,14 @@
 import { LOGO } from "../../utils/constants";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
+import UserContext from "../../utils/UserContext";
+
 const Header = () => {
   const [loginButton, setLoginButton] = useState("login");
   const onlineStatus = useOnlineStatus();
+  const { loggedInUser } = useContext(UserContext);
+  console.log("data = ", loggedInUser);
   return (
     <div className="flex justify-between shadow-lg mb-2 bg-emerald-200">
       <div className="logo-container">
@@ -30,12 +34,13 @@ const Header = () => {
             className="p-2"
             onClick={() => {
               loginButton === "login"
-                ? setLoginButton("logout")
+                ? setLoginButton("logout}")
                 : setLoginButton("login");
             }}
           >
             {loginButton}
           </button>
+          <p>{loggedInUser}</p>
         </ul>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import UserContext from "../../utils/UserContext";
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
@@ -23,6 +24,14 @@ class UserClass extends React.Component {
     const { login, location } = this.state.userInfo;
     return (
       <div className="user-card">
+        <div>
+          LoggedInUser :
+          <UserContext.Consumer>
+            {({ loggedInUser }) => {
+              return <h1 className="font-bold">{loggedInUser}</h1>;
+            }}
+          </UserContext.Consumer>
+        </div>
         <h1>Count : {count}</h1>
         <button
           onClick={() => {

@@ -8,6 +8,7 @@ import About from "./components/About";
 import Error from "./components/Error";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurentMenu from "./components/RestaurentMenu";
+import UserContext from "../utils/UserContext";
 // import Grocery from "./components/Grocery";
 const Grocery = lazy(() => {
   return import("./components/Grocery");
@@ -15,7 +16,9 @@ const Grocery = lazy(() => {
 const AppLayout = () => {
   return (
     <div className="App">
-      <Header />
+      <UserContext.Provider value={{ loggedInUser: "sampath" }}>
+        <Header />
+      </UserContext.Provider>
       <Outlet />
     </div>
   );
