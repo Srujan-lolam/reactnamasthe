@@ -3,7 +3,9 @@ import Shimmar from "./Shimmar";
 import { useParams } from "react-router-dom";
 import useRestaurentMenu from "../../utils/useRestaurentMenu";
 import RestaurentCategory from "./RestaurentCategory";
+import { useState } from "react";
 const RestaurentMenu = () => {
+  const [showIndex, setShowIndex] = useState(null);
   const { resId } = useParams();
   const cleanedResId = resId.replace(/^:/, "");
   const resInfo = useRestaurentMenu(cleanedResId);
@@ -30,11 +32,12 @@ const RestaurentMenu = () => {
       <p className="font-bold text-2xl">
         {cuisines.join(", ")} - {costForTwoMessage}
       </p>
-      {categories.map((category) => {
+      {categories.map((category, index) => {
         return (
           <RestaurentCategory
             key={category.card.card.title}
             data={category.card.card}
+            showItems={index === showIndex}
           />
         );
       })}
