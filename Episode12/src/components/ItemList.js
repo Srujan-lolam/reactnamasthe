@@ -3,8 +3,8 @@ import { IMAGE } from "../../utils/constants";
 import { addItem } from "../../utils/cartSlice";
 const ItemList = ({ items }) => {
   const dispatch = useDispatch();
-  const handleAddItem = () => {
-    dispatch(addItem("burger"));
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
   };
   return (
     <div>
@@ -34,7 +34,7 @@ const ItemList = ({ items }) => {
                 />
                 <button
                   className="bg-black text-white rounder-lg w-10 ml-2"
-                  onClick={handleAddItem}
+                  onClick={() => handleAddItem(item)}
                 >
                   Add+
                 </button>
