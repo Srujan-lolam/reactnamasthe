@@ -23,10 +23,13 @@ const AppLayout = () => {
   const location = useLocation(); // Use useLocation hook to get current location
 
   useEffect(() => {
-    console.log("Initializing Google Analytics...");
-    ReactGA.initialize("G-Q85LZ1SW44"); // Make sure to replace with your actual tracking ID
-    ReactGA.pageview(location.pathname + location.search); // Use location object for tracking
+    if (!window.GA_INITIALIZED) {
+      console.log("Initializing Google Analytics...");
+      ReactGA.initialize("G-Q85LZ1SW44"); // Your actual Google Analytics tracking ID
+      window.GA_INITIALIZED = true; // Ensure it is initialized only once
+    }
 
+    ReactGA.pageview(location.pathname + location.search); // Track the pageview
     console.log("Tracking pageview:", location.pathname);
   }, [location]); // Dependency on route changes
 
