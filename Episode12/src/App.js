@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import React, { lazy, Suspense, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "/index.css";
 import Body from "./components/Body";
@@ -12,10 +12,19 @@ import UserContext from "../utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "../utils/appStore";
 import Cart from "./components/Cart";
+import ReactGA from "react-ga"; // Importing React GA
+
 const Grocery = lazy(() => {
   return import("./components/Grocery");
 });
+
 const AppLayout = () => {
+  useEffect(() => {
+    ReactGA.initialize("G-6E5190C680");
+    // Track pageview on route change
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, [window.location.pathname]); // Dependency on route changes
+
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: "sampath" }}>
@@ -27,6 +36,7 @@ const AppLayout = () => {
     </Provider>
   );
 };
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -64,5 +74,6 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
   },
 ]);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(<RouterProvider router={appRouter} />);
