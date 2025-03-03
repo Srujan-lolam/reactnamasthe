@@ -24,7 +24,7 @@ const AppLayout = () => {
 
   useEffect(() => {
     console.log("Initializing Google Analytics...");
-    ReactGA.initialize("G-S2WS6EWKHZ"); // Make sure to replace with your actual tracking ID
+    ReactGA.initialize("G-Q85LZ1SW44"); // Make sure to replace with your actual tracking ID
     ReactGA.pageview(location.pathname + location.search); // Use location object for tracking
 
     console.log("Tracking pageview:", location.pathname);
