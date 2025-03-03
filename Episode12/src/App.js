@@ -13,19 +13,22 @@ import { Provider } from "react-redux";
 import appStore from "../utils/appStore";
 import Cart from "./components/Cart";
 import ReactGA from "react-ga"; // Importing React GA
+import { useLocation } from "react-router-dom";
 
 const Grocery = lazy(() => {
   return import("./components/Grocery");
 });
 
 const AppLayout = () => {
+  const location = useLocation(); // Use useLocation hook to get current location
+
   useEffect(() => {
     console.log("Initializing Google Analytics...");
     ReactGA.initialize("G-6E5190C680"); // Make sure to replace with your actual tracking ID
-    ReactGA.pageview(location.pathname + location.search);
+    ReactGA.pageview(location.pathname + location.search); // Use location object for tracking
 
     console.log("Tracking pageview:", location.pathname);
-  }, [window.location.pathname]); // Dependency on route changes
+  }, [location]); // Dependency on route changes
 
   return (
     <Provider store={appStore}>
