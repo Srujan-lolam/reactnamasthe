@@ -20,11 +20,11 @@ const Grocery = lazy(() => {
 
 const AppLayout = () => {
   useEffect(() => {
-    ReactGA.initialize("G-6E5190C680");
-    console.log("Google Analytics initialized");
+    console.log("Initializing Google Analytics...");
+    ReactGA.initialize("G-6E5190C680"); // Make sure to replace with your actual tracking ID
+    ReactGA.pageview(location.pathname + location.search);
 
-    // Track pageview on route change
-    ReactGA.pageview(window.location.pathname + window.location.search);
+    console.log("Tracking pageview:", location.pathname);
   }, [window.location.pathname]); // Dependency on route changes
 
   return (
