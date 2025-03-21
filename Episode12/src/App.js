@@ -14,7 +14,15 @@ import appStore from "../utils/appStore";
 import Cart from "./components/Cart";
 import ReactGA from "react-ga"; // Importing React GA
 import { useLocation } from "react-router-dom";
+import * as Sentry from "@sentry/react";
+import { BrowserTracing } from "@sentry/tracing";
 
+Sentry.init({
+  dsn: "https://572354ec3be11d4b208d47b2d2263f2d@o4508991536758784.ingest.us.sentry.io/4509015415521280",
+  integrations: [new BrowserTracing()],
+  tracesSampleRate: 1.0, // Adjust based on your needs
+  profilesSampleRate: 1.0, // Enables profiling, can be adjusted
+});
 const Grocery = lazy(() => {
   return import("./components/Grocery");
 });

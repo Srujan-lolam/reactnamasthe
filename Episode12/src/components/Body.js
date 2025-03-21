@@ -4,6 +4,10 @@ import { useEffect, useState } from "react";
 import Shimmar from "./Shimmar";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 const Body = () => {
+  const throwError = () => {
+    throw new Error("Test Sentry Error!");
+  };
+
   const [listOfRestaurents, setListOfRestaurents] = useState([]);
   const [inputText, setInputText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -65,6 +69,7 @@ const Body = () => {
           >
             Search
           </button>
+          <button onClick={throwError}>Trigger Sentry Error</button>
         </div>
         <button
           className="px-2 py-1  m-1 rounded-lg bg-green-200"
