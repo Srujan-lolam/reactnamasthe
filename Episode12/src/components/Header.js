@@ -4,8 +4,15 @@ import { Link } from "react-router-dom";
 import useOnlineStatus from "../../utils/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
 import { useSelector } from "react-redux";
-
+import * as Sentry from "@sentry/react";
 const Header = () => {
+  const handleError = () => {
+    try {
+      throw new Error("Something went wrong!");
+    } catch (err) {
+      Sentry.captureException(err); // Manually send error to Sentry
+    }
+  };
   const [loginButton, setLoginButton] = useState("login");
   const onlineStatus = useOnlineStatus();
   const { loggedInUser } = useContext(UserContext);
@@ -31,10 +38,10 @@ const Header = () => {
           <li className="p-2">
             <Link to="./grocery">Grocery</Link>
           </li>
-
           <li className="p-2 font-bold text-xl">
             <Link to="./cart">Cart - {cartItems.length}</Link>
           </li>
+          <button onClick={handleError}>Test Sentry Error</button>;
           <button
             className="p-2"
             onClick={() => {
