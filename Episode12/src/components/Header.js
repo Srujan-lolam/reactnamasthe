@@ -8,6 +8,7 @@ import * as Sentry from "@sentry/react";
 const Header = () => {
   const handleError = () => {
     try {
+      console.log("srujan");
       throw new Error("Something went wrong!");
     } catch (err) {
       Sentry.captureException(err); // Manually send error to Sentry
@@ -41,7 +42,7 @@ const Header = () => {
           <li className="p-2 font-bold text-xl">
             <Link to="./cart">Cart - {cartItems.length}</Link>
           </li>
-          <button onClick={handleError}>Test Sentry Error</button>;
+          <button onClick={handleError()}>Test Sentry Error</button>;
           <button
             className="p-2"
             onClick={() => {
